@@ -1,0 +1,7 @@
+.content {
+	position: absolute;
+	left: 50px;
+	width: 150px;
+	height: 150px;
+	background-color: rgb(150,150,150);
+}

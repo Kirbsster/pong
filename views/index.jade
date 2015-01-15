@@ -1,0 +1,25 @@
+doctype html
+html
+	head
+		title= title
+		link(rel='stylesheet', href='/css/style.css')
+		script(type="text/javascript" src="/js/jquery-2.1.1.min.js")
+		script(type="text/javascript" src="/socket.io/socket.io.js")
+		script.
+			var socket = io();
+		script.
+			$(document).ready(function(){
+				
+			});
+	body
+		.content
+			p 
+			script.
+				$(document).on('mousemove',function(event){
+					var mousePosition = {'xPos':event.pageX, 'yPos':event.pageY}
+					socket.emit('mouseXPosFromBrowser',mousePosition);
+				});
+				socket.on('mouseXPosFromServer',function(mousePosition){
+					$('.content').css('left',mousePosition.xPos);
+					$('.content').css('top',mousePosition.yPos);
+				});
